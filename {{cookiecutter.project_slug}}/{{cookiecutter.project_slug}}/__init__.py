@@ -2,6 +2,9 @@
 
 """Top-level package for {{ cookiecutter.project_name }}."""
 
-__author__ = """{{ cookiecutter.full_name }}"""
-__email__ = '{{ cookiecutter.email }}'
-__version__ = '{{ cookiecutter.version }}'
+from .{{ cookiecutter.project_slug }} import *
+from .pckg_info import version, email, author
+
+__author__ = author
+__email__ = email
+__version__ = version
