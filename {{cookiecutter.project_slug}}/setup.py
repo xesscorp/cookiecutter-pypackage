@@ -3,7 +3,17 @@
 
 """The setup script."""
 
+import sys
 from setuptools import setup, find_packages
+
+author = '{{ cookiecutter.full_name }}'
+email = '{{ cookiecutter.email }}'
+version = '{{ cookiecutter.version }}'
+
+if 'sdist' in sys.argv[1:]:
+    with open('{{ cookiecutter.project_slug }}/pckg_info.py','w') as f:
+        for name in ['version','author','email']:
+            f.write("{} = '{}'\n".format(name,locals()[name]))
 
 with open('README.rst') as readme_file:
     readme = readme_file.read()
@@ -26,8 +36,8 @@ test_requirements = [{%- if cookiecutter.use_pytest == 'y' %}'pytest',{%- endif 
 } %}
 
 setup(
-    author="{{ cookiecutter.full_name.replace('\"', '\\\"') }}",
-    author_email='{{ cookiecutter.email }}',
+    author=author,
+    author_email=email,
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',
@@ -64,6 +74,6 @@ setup(
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}',
-    version='{{ cookiecutter.version }}',
+    version=version,
     zip_safe=False,
 )
