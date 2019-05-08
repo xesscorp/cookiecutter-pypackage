@@ -26,7 +26,7 @@
 
 {% if is_open_source %}
 * Free software: {{ cookiecutter.open_source_license }}
-* Documentation: https://{{ cookiecutter.project_slug | replace("_", "-") }}.readthedocs.io.
+* Documentation: https://{{ github_username }}.github.io/{{ cookiecutter.project_slug | replace("_", "-") }}.docs/_site/index.html .
 {% endif %}
 
 Features
