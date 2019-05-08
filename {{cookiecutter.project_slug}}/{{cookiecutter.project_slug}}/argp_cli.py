@@ -5,7 +5,7 @@ import os
 import shutil
 import sys
 import logging
-from .{{ cookiecutter.project_name }} import *
+from .{{ cookiecutter.project_slug }} import *
 
 ###############################################################################
 # Command-line interface.
@@ -18,7 +18,7 @@ def main():
     parser.add_argument('--version',
                         '-v',
                         action='version',
-                        version='{{ cookiecutter.pypi_name }} ' + version)
+                        version='{{ cookiecutter.project_slug }} ' + version)
     parser.add_argument(
         '--extract',
         '-x',
@@ -66,7 +66,7 @@ def main():
 
     args = parser.parse_args()
 
-    logger = logging.getLogger('{{ cookiecutter.pypi_name }}')
+    logger = logging.getLogger('{{ cookiecutter.project_slug }}')
     if args.debug is not None:
         log_level = logging.DEBUG + 1 - args.debug
         handler = logging.StreamHandler(sys.stdout)
@@ -110,7 +110,7 @@ def main():
         else:
             inc_fields.append(f)
 
-    {{ cookiecutter.project_name }}(extract_filenames=args.extract,
+    {{ cookiecutter.project_slug }}(extract_filenames=args.extract,
             insert_filenames=args.insert,
             inc_field_names=inc_fields,
             exc_field_names=exc_fields)
