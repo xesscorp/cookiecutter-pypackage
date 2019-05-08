@@ -25,18 +25,18 @@ if __name__ == '__main__':
         remove_file(click_file)
         argp_file = os.path.join('{{ cookiecutter.project_slug }}', 'argp_cli.py')
         remove_file(argp_file)
-    elsif '{{ cookiecutter.command_line_interface|lower }}' == 'argparse':
+    elif '{{ cookiecutter.command_line_interface|lower }}' == 'argparse':
         click_file = os.path.join('{{ cookiecutter.project_slug }}', 'click_cli.py')
         remove_file(click_file)
         argp_file = os.path.join('{{ cookiecutter.project_slug }}', 'argp_cli.py')
         cli_file = os.path.join('{{ cookiecutter.project_slug }}', 'cli.py')
-        rename(argp_file, cli_file)
-    elsif '{{ cookiecutter.command_line_interface|lower }}' == 'click':
+        rename_file(argp_file, cli_file)
+    elif '{{ cookiecutter.command_line_interface|lower }}' == 'click':
         argp_file = os.path.join('{{ cookiecutter.project_slug }}', 'argp_cli.py')
         remove_file(argp_file)
         click_file = os.path.join('{{ cookiecutter.project_slug }}', 'click_cli.py')
         cli_file = os.path.join('{{ cookiecutter.project_slug }}', 'cli.py')
-        rename(click_file, cli_file)
+        rename_file(click_file, cli_file)
 
     if 'Not open source' == '{{ cookiecutter.open_source_license }}':
         remove_file('LICENSE')
