@@ -6,13 +6,13 @@
 import sys
 from setuptools import setup, find_packages
 
-author = '{{ cookiecutter.full_name }}'
-email = '{{ cookiecutter.email }}'
-version = '{{ cookiecutter.version }}'
+__author__ = '{{ cookiecutter.full_name }}'
+__email__ = '{{ cookiecutter.email }}'
+__version__ = '{{ cookiecutter.version }}'
 
 if 'sdist' in sys.argv[1:]:
     with open('{{ cookiecutter.project_slug }}/pckg_info.py','w') as f:
-        for name in ['version','author','email']:
+        for name in ['__version__','__author__','__email__']:
             f.write("{} = '{}'\n".format(name,locals()[name]))
 
 with open('README.rst') as readme_file:
@@ -36,8 +36,9 @@ test_requirements = [{%- if cookiecutter.use_pytest == 'y' %}'pytest',{%- endif 
 } %}
 
 setup(
-    author=author,
-    author_email=email,
+    author=__author__,
+    author_email=__email__,
+    version=__version__,
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',
@@ -74,6 +75,5 @@ setup(
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}',
-    version=version,
     zip_safe=False,
 )
